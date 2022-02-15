@@ -44,31 +44,36 @@ const Register: React.FC = observer(() => {
             size="small"
             label="Name"
             disabled={store.isFetching}
+            error={store.nameDirty && store.nameError}
             value={store.name}
-            onChange={(e) => store.setName(e.target.value)}
-          />
-          <TextField 
-            size="small"
-            label="Surname"
-            disabled={store.isFetching}
-            value={store.surname}
-            onChange={(e) => store.setSurname(e.target.value)}
+            onChange={(e) => {
+              store.dirtyName();
+              store.setName(e.target.value)
+            }}
           />
           <TextField 
             size="small"
             label="Email"
             type="email"
             disabled={store.isFetching}
+            error={store.emailDirty && store.emailError}
             value={store.email}
-            onChange={(e) => store.setEmail(e.target.value)}
+            onChange={(e) => {
+              store.dirtyEmail();
+              store.setEmail(e.target.value)
+            }}
           />
           <TextField 
             size="small"
             label="Password"
             type="password"
             disabled={store.isFetching}
+            error={store.passwordDirty && store.passwordError}
             value={store.password}
-            onChange={(e) => store.setPassword(e.target.value)}
+            onChange={(e) => {
+              store.dirtyPassword();
+              store.setPassword(e.target.value);
+            }}
           />
           <TextField 
             size="small"
@@ -86,7 +91,12 @@ const Register: React.FC = observer(() => {
             loading={store.isFetching}
             variant="contained"
             onClick={store.submit}
-            disabled={!store.passwordsMatch}
+            disabled={
+              !store.passwordsMatch ||
+              store.passwordError ||
+              store.emailError ||
+              store.nameError
+            }
           >
             Sign Up
           </LoadingButton>

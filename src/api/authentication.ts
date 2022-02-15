@@ -9,7 +9,6 @@ interface LoginFormData {
 
 interface RegisterFormData {
   name: string;
-  surname: string;
   email: string;
   password: string;
 }

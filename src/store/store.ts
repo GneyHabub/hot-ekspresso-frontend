@@ -8,12 +8,12 @@ class AppStore {
     this.setToken = this.setToken.bind(this);
 
     runInAction(() => {
-      this.token = sessionStorage.getItem('token');
+      this.token = localStorage.getItem('token');
     });
   }
 
   setToken(token: string) {
-    sessionStorage.setItem('token', token);
+    localStorage.setItem('token', token);
     this.token = token;
   }
 }

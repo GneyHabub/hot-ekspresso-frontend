@@ -7,7 +7,9 @@ import store from "./store";
 class LoginStore {
   fetchingStatus: FetchingStatus = "notFetched";
   email: string = '';
+  emailDirty: boolean = false;
   password: string = '';
+  passwordDirty: boolean = false;
   constructor() {
     makeAutoObservable(this);
     this.submit = this.submit.bind(this);
@@ -16,8 +18,14 @@ class LoginStore {
   setEmail(email: string) {
     this.email = email;
   }
+  dirtyEmail() {
+    this.emailDirty = true;
+  }
   setPassword(password: string) {
     this.password = password;
+  }
+  dirtyPassword() {
+    this.passwordDirty = true;
   }
   async submit() {
     runInAction(() => {
@@ -37,6 +45,12 @@ class LoginStore {
 
   get isFetching() {
     return this.fetchingStatus === "fetching"
+  }
+  get emailError() {
+    return !this.email;
+  }
+  get passwordError() {
+    return !this.password;
   }
 }
 

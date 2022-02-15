@@ -7,9 +7,11 @@ import store from "./store";
 class RegisterStore {
   fetchingStatus: FetchingStatus = "notFetched";
   name: string = '';
-  surname: string = '';
+  nameDirty: boolean = false;
   email: string = '';
+  emailDirty: boolean = false;
   password: string = '';
+  passwordDirty: boolean = false;
   repeatPassword: string = '';
 
   constructor() {
@@ -20,14 +22,20 @@ class RegisterStore {
   setName(name: string) {
     this.name = name;
   }
-  setSurname(surname: string) {
-    this.surname = surname;
+  dirtyName() {
+    this.nameDirty = true;
   }
   setEmail(email: string) {
     this.email = email;
   }
+  dirtyEmail() {
+    this.emailDirty = true;
+  }
   setPassword(password: string) {
     this.password = password;
+  }
+  dirtyPassword() {
+    this.passwordDirty = true;
   }
   setRepeatPassword(repeatPassword: string) {
     this.repeatPassword = repeatPassword;
@@ -39,7 +47,6 @@ class RegisterStore {
     try {
       const token = await register({
         name: this.name,
-        surname: this.surname,
         email: this.email, 
         password: this.password
       });
@@ -58,6 +65,15 @@ class RegisterStore {
   }
   get passwordsMatch() {
     return this.password.localeCompare(this.repeatPassword) === 0;
+  }
+  get nameError() {
+    return !this.name;
+  }
+  get emailError() {
+    return !this.email;
+  }
+  get passwordError() {
+    return !this.password;
   }
 }
 

@@ -47,7 +47,11 @@ const Login: React.FC = observer(() => {
             type="email"
             disabled={store.isFetching}
             value={store.email}
-            onChange={(e) => store.setEmail(e.target.value)}
+            error={store.emailDirty && store.emailError}
+            onChange={(e) => {
+              store.dirtyEmail();
+              store.setEmail(e.target.value)
+            }}
           />
           <TextField 
             size="small"
@@ -55,7 +59,11 @@ const Login: React.FC = observer(() => {
             type="password"
             disabled={store.isFetching}
             value={store.password}
-            onChange={(e) => store.setPassword(e.target.value)}
+            error={store.passwordDirty && store.passwordError}
+            onChange={(e) => {
+              store.dirtyPassword();
+              store.setPassword(e.target.value)
+            }}
           />
           <Link href="/register" variant="body2" underline="hover">
             No account yet? Sign up here!
@@ -64,6 +72,7 @@ const Login: React.FC = observer(() => {
             loading={store.isFetching}
             variant="contained"
             onClick={store.submit}
+            disabled={store.emailError && store.passwordError}
           >
             Log In
           </LoadingButton>
