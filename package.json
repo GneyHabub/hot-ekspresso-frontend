@@ -5,7 +5,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "test:update-snapshots": "jest -u"
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
