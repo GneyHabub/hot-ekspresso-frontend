@@ -1,23 +1,26 @@
-import { createBrowserHistory } from 'history';
-import { observer } from 'mobx-react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import { NotificationContainer } from './components/Notification/NotificationContainer';
 import Login from './pages/login/Login';
-import Register from './pages/register/Register';
 import Tickets from './pages/tickets/Tickets';
-import AppStore from './store/store';
+import { useAuth0 } from "@auth0/auth0-react";
+import { CircularProgress } from '@mui/material';
 
-const App = observer(() => {
+const App: React.FC = () => {
+  const {isAuthenticated, isLoading} = useAuth0();
 
-  const token = AppStore.token;
+  if(isLoading) {
+    return (
+    <Layout>
+      <CircularProgress />
+    </Layout>)
+  }
 
-  if(!token) {
+  if(!isAuthenticated) {
     return(
       <Layout>
         <Routes>
           <Route path='/login'element={<Login/>}/>
-          <Route path='/register'element={<Register/>}/>
           <Route path='*' element={<Navigate replace to="/login"/>}/>
         </Routes>
         <NotificationContainer/>
@@ -34,6 +37,6 @@ const App = observer(() => {
       <NotificationContainer/>
     </Layout>
   )
-});
+};
 
 export default App

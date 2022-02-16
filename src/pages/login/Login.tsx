@@ -1,22 +1,11 @@
-import { Box, Card, CardContent, CardHeader, Link, TextField } from '@mui/material'
+import { Box, Card, CardContent, CardHeader } from '@mui/material'
 import React from 'react';
-import loginStore from '../../store/login.store';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { observer } from 'mobx-react';
-import generalStore from '../../store/store';
-import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
-const Login: React.FC = observer(() => {
-  const store = loginStore;
-  const navigate = useNavigate();
-  const token = generalStore.token;
-
-  React.useEffect(() => {
-    if(token) {
-      navigate('/');
-    }
-  }, [token]);
-
+const Login: React.FC = () => {
+  const { loginWithRedirect } = useAuth0();
+  
   return (
     <Box
       sx={{
@@ -32,47 +21,10 @@ const Login: React.FC = observer(() => {
           alignItems: "center"
         }}
       >
-        <CardHeader title="Log In"/>
-        <CardContent
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            rowGap: "20px",
-          }}
-        >
-        <TextField 
-            size="small"
-            label="Email"
-            type="email"
-            disabled={store.isFetching}
-            value={store.email}
-            error={store.emailDirty && store.emailError}
-            onChange={(e) => {
-              store.dirtyEmail();
-              store.setEmail(e.target.value)
-            }}
-          />
-          <TextField 
-            size="small"
-            label="Password"
-            type="password"
-            disabled={store.isFetching}
-            value={store.password}
-            error={store.passwordDirty && store.passwordError}
-            onChange={(e) => {
-              store.dirtyPassword();
-              store.setPassword(e.target.value)
-            }}
-          />
-          <Link href="/register" variant="body2" underline="hover">
-            No account yet? Sign up here!
-          </Link>
+        <CardContent> 
           <LoadingButton 
-            loading={store.isFetching}
             variant="contained"
-            onClick={store.submit}
-            disabled={store.emailError && store.passwordError}
+            onClick={() => loginWithRedirect()}
           >
             Log In
           </LoadingButton>
@@ -80,6 +32,6 @@ const Login: React.FC = observer(() => {
       </Card>
     </Box>
   )
-});
+};
 
 export default Login;
