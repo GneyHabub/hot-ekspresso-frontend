@@ -4,10 +4,17 @@ import { NotificationContainer } from './components/Notification/NotificationCon
 import Login from './pages/login/Login';
 import Tickets from './pages/tickets/Tickets';
 import { useAuth0 } from "@auth0/auth0-react";
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import React from 'react';
+import { Box } from '@mui/system';
+import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
+import HotelIcon from '@mui/icons-material/Hotel';
+import ModeOfTravelIcon from '@mui/icons-material/ModeOfTravel';
+import { H1, H3, H4 } from './components/typography';
 
 const App: React.FC = () => {
   const {isAuthenticated, isLoading} = useAuth0();
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
   if(isLoading) {
     return (
@@ -29,13 +36,54 @@ const App: React.FC = () => {
   }
 
   return (
-    <Layout>
-      <Routes>
-        <Route path='/'element={<Tickets/>}/>
-        <Route path='*' element={<Navigate replace to="/"/>}/>
-      </Routes>
-      <NotificationContainer/>
-    </Layout>
+    <>
+      <Layout
+        onSidebarOpen={() => setIsSidebarOpen(true)}
+      >
+        <Routes>
+          <Route path='/'element={<Tickets/>}/>
+          <Route path='*' element={<Navigate replace to="/"/>}/>
+        </Routes>
+        <NotificationContainer/>
+      </Layout>
+      <Drawer
+        anchor={'left'}
+        open={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      >
+        <Box
+          sx={{
+            width: 250
+          }}
+          role="presentation"
+        >
+          <H4>Travel App</H4>
+          <Divider />
+          <List>
+            <ListItem button>
+              <ListItemIcon>
+                <AirplaneTicketIcon />
+              </ListItemIcon>
+              <ListItemText primary="Tickets" />
+            </ListItem>
+
+            <ListItem button>
+              <ListItemIcon>
+                <HotelIcon />
+              </ListItemIcon>
+              <ListItemText primary="Hotels" />
+            </ListItem>
+
+            <ListItem button>
+              <ListItemIcon>
+                <ModeOfTravelIcon />
+              </ListItemIcon>
+              <ListItemText primary="Trip planning" />
+            </ListItem>
+          </List>
+        </Box>
+      </Drawer>
+    </>
   )
 };
 

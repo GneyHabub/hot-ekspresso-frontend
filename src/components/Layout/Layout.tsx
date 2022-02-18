@@ -4,8 +4,13 @@ import * as colors from '@mui/material/colors';
 import { AppBar, IconButton, Link, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
 import { useAuth0 } from '@auth0/auth0-react';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import MenuIcon from '@mui/icons-material/Menu';
 
-const Layout: React.FC = ({children}) => {
+interface Props {
+  onSidebarOpen?: () => void
+}
+
+const Layout: React.FC<Props> = ({children, onSidebarOpen}) => {
   const {isAuthenticated, logout} = useAuth0();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -30,6 +35,18 @@ const Layout: React.FC = ({children}) => {
     >
       <AppBar position="static">
         <Toolbar>
+          {isAuthenticated &&
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              onClick={onSidebarOpen}
+            >
+              <MenuIcon />
+            </IconButton>
+          }
           <Link 
             sx={{ 
               flexGrow: 1,
