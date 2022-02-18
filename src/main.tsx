@@ -13,8 +13,8 @@ ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
         <Auth0Provider
-          domain={getEnv("DOMAIN").toString()}
-          clientId={getEnv("CLIENT_ID").toString()}
+          domain={getEnv("DOMAIN")}
+          clientId={getEnv("CLIENT_ID")}
           redirectUri={window.location.origin}
           onRedirectCallback={(appState) => {
             console.log("called");

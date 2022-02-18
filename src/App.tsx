@@ -4,13 +4,13 @@ import { NotificationContainer } from './components/Notification/NotificationCon
 import Login from './pages/login/Login';
 import Tickets from './pages/tickets/Tickets';
 import { useAuth0 } from "@auth0/auth0-react";
-import { CircularProgress, Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { CircularProgress, Divider, Drawer, Icon, IconButton, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React from 'react';
 import { Box } from '@mui/system';
 import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 import HotelIcon from '@mui/icons-material/Hotel';
 import ModeOfTravelIcon from '@mui/icons-material/ModeOfTravel';
-import { H1, H3, H4 } from './components/typography';
+import CloseIcon from '@mui/icons-material/Close';
 
 const App: React.FC = () => {
   const {isAuthenticated, isLoading} = useAuth0();
@@ -57,7 +57,19 @@ const App: React.FC = () => {
           }}
           role="presentation"
         >
-          <H4>Travel App</H4>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              padding: "5px"
+            }}
+          >
+            <IconButton
+              onClick={() => setIsSidebarOpen(false)}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
           <Divider />
           <List>
             <ListItem button>

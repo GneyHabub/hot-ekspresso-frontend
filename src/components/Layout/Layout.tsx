@@ -1,7 +1,7 @@
 import { Box } from '@mui/system';
 import React from 'react';
 import * as colors from '@mui/material/colors';
-import { AppBar, IconButton, Link, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
+import { AppBar, Container, IconButton, Link, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
 import { useAuth0 } from '@auth0/auth0-react';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -29,7 +29,7 @@ const Layout: React.FC<Props> = ({children, onSidebarOpen}) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        rowGap: "100px",
+        rowGap: "30px",
         backgroundColor: colors.grey[50]
       }}
     >
@@ -93,7 +93,12 @@ const Layout: React.FC<Props> = ({children, onSidebarOpen}) => {
           }
         </Toolbar>
       </AppBar>
+      <Container
+        maxWidth="lg"
+      >
         {children}
+      </Container>
+          
     </Box>
   )
 }
