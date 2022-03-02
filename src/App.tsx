@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import { NotificationContainer } from './components/Notification/NotificationContainer';
 import Login from './pages/login/Login';
@@ -15,6 +15,7 @@ import CloseIcon from '@mui/icons-material/Close';
 const App: React.FC = () => {
   const {isAuthenticated, isLoading} = useAuth0();
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   if(isLoading) {
     return (
@@ -72,14 +73,20 @@ const App: React.FC = () => {
           </Box>
           <Divider />
           <List>
-            <ListItem button>
+            <ListItem button onClick={() => {
+              setIsSidebarOpen(false);
+              navigate('/');
+            }}>
               <ListItemIcon>
                 <AirplaneTicketIcon />
               </ListItemIcon>
               <ListItemText primary="Tickets" />
             </ListItem>
 
-            <ListItem button>
+            <ListItem button onClick={() => {
+              setIsSidebarOpen(false);
+              navigate('/hotels');
+            }}>
               <ListItemIcon>
                 <HotelIcon />
               </ListItemIcon>

@@ -36,7 +36,7 @@ const Tickets: React.FC = () => {
         </Typography>
           <div>
             {store.bookings.map((b, idx) => (
-              <BookingItem idx={idx} booking={b} />
+              <BookingItem idx={idx} booking={b} key={b.id}/>
             ))}
           </div>
         </CardContent>

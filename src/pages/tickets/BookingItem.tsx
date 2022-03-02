@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, colors, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Card, colors, Divider, Typography } from '@mui/material';
 import React from 'react';
 import { Booking } from '../../utils/types';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -34,30 +34,61 @@ const BookingItem: React.FC<Props> = ({booking, idx}) => {
             {dayjs(booking.flights[0].departure).format("DD.MM.YYYY")}
           </Typography>
         </AccordionSummary>
-        <AccordionDetails>
-        <Box
+        <AccordionDetails
           sx={{
-            width: "15%"
+            display: "flex",
+            gap: "5px"
           }}
         >
-          <Timeline>
-            {booking.flights.map(flight => (
+          <Box
+            sx={{
+              width: "20%",
+              padding: "15px"
+            }}
+          >
+            <Typography variant="subtitle1" fontSize="18px">Route</Typography>
+            <Timeline>
+              {booking.flights.map((flight, idx) => (
+                <TimelineItem key={flight.from}>
+                  <TimelineSeparator>
+                    <TimelineDot />
+                    <TimelineConnector />
+                  </TimelineSeparator>
+                  <TimelineContent>
+                    {flight.from}
+                  </TimelineContent>
+                </TimelineItem>
+              ))}
               <TimelineItem>
                 <TimelineSeparator>
                   <TimelineDot />
-                  <TimelineConnector />
                 </TimelineSeparator>
-                <TimelineContent>{flight.from}</TimelineContent>
+                <TimelineContent
+                  sx={{
+                    paddingBottom: 0
+                  }}
+                >
+                  {booking.flights[booking.flights.length - 1].to}
+                </TimelineContent>
               </TimelineItem>
-            ))}
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot />
-              </TimelineSeparator>
-              <TimelineContent>{booking.flights[booking.flights.length - 1].to}</TimelineContent>
-            </TimelineItem>
-          </Timeline>
-        </Box>
+            </Timeline>
+          </Box>
+          <Divider orientation='vertical' flexItem />
+          <Box
+            sx={{
+              padding: "15px"
+            }}
+          >
+            <Typography variant="subtitle1" fontSize="18px">
+              <b>Price:</b> ₸{booking.price}
+            </Typography>
+            <Typography variant="subtitle1" fontSize="18px">
+              <b>Departure:</b> {dayjs(booking.flights[0].departure).format('DD.MM.YYYY HH:mm')}
+            </Typography>
+            <Typography variant="subtitle1" fontSize="18px">
+              <b>Arrival:</b> {dayjs(booking.flights[booking.flights.length - 1].arrival).format('DD.MM.YYYY HH:mm')}
+            </Typography>
+          </Box>
         </AccordionDetails>
       </Accordion>
   )
