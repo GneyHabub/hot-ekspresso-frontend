@@ -11,6 +11,8 @@ import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 import HotelIcon from '@mui/icons-material/Hotel';
 import ModeOfTravelIcon from '@mui/icons-material/ModeOfTravel';
 import CloseIcon from '@mui/icons-material/Close';
+import Hotels from './pages/hotels/Hotels';
+import NewBooking from './pages/tickets/NewBooking';
 
 const App: React.FC = () => {
   const {isAuthenticated, isLoading} = useAuth0();
@@ -42,8 +44,16 @@ const App: React.FC = () => {
         onSidebarOpen={() => setIsSidebarOpen(true)}
       >
         <Routes>
-          <Route path='/'element={<Tickets/>}/>
-          <Route path='*' element={<Navigate replace to="/"/>}/>
+          <Route 
+            path='/tickets'
+            element={<Tickets />} 
+          />
+          <Route 
+            path='/tickets/new-booking'
+            element={<NewBooking />} 
+          />
+          <Route path='/hotels'element={<Hotels />}/>
+          <Route path='*' element={<Navigate replace to="/tickets"/>}/>
         </Routes>
         <NotificationContainer/>
       </Layout>
@@ -75,7 +85,7 @@ const App: React.FC = () => {
           <List>
             <ListItem button onClick={() => {
               setIsSidebarOpen(false);
-              navigate('/');
+              navigate('/tickets');
             }}>
               <ListItemIcon>
                 <AirplaneTicketIcon />
