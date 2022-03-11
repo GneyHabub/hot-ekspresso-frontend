@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Card, colors, Divider, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Card, colors, Divider, Typography } from '@mui/material';
 import React from 'react';
 import { Booking } from '../../utils/types';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -9,9 +9,10 @@ import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem
 interface Props {
   booking: Booking;
   idx: number;
+  onPick?: (id: string) => void;
 }
 
-const BookingItem: React.FC<Props> = ({booking, idx}) => {
+const BookingItem: React.FC<Props> = ({booking, idx, onPick}) => {
   return (
     <Accordion>
         <AccordionSummary
@@ -88,6 +89,18 @@ const BookingItem: React.FC<Props> = ({booking, idx}) => {
             <Typography variant="subtitle1" fontSize="18px">
               <b>Arrival:</b> {dayjs(booking.flights[booking.flights.length - 1].arrival).format('DD.MM.YYYY HH:mm')}
             </Typography>
+            <Typography variant="subtitle1" fontSize="18px">
+              <b>Service Class:</b> {booking.serviceClass}
+            </Typography>
+            {onPick &&
+              <Button
+                variant="contained"
+                onClick={() => onPick(booking.id)}
+              >
+                Choose
+              </Button>
+            }
+            
           </Box>
         </AccordionDetails>
       </Accordion>

@@ -10,6 +10,14 @@ export interface Flight {
 export interface Booking {
   id: string;
   price: number;
-  flights: Flight[]
-
+  flights: Flight[];
+  serviceClass: ServiceClasses;
 }
+
+export interface Airport {
+  city: string;
+  name: string;
+  iata: string;
+}
+
+export type ServiceClasses = "Economy" | "Comfort" | "Business";

@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { Booking } from "../utils/types";
+import { Airport, Booking } from "../utils/types";
 
 export async function fetchBookings(authToken: string): Promise<Booking[]> {
   return new Promise((resolve, reject) => {
@@ -14,7 +14,8 @@ export async function fetchBookings(authToken: string): Promise<Booking[]> {
             departure: dayjs().startOf("month").toDate(), 
             arrival: dayjs().startOf("month").add(1, "hour").toDate(),
             carrier: "RedWings"
-          }]
+          }],
+          serviceClass: "Economy",
         },
         {
           id: "BBB",
@@ -34,7 +35,37 @@ export async function fetchBookings(authToken: string): Promise<Booking[]> {
               arrival: dayjs().startOf("month").add(10, "day").add(4, "hour").toDate(),
               carrier: "Pobeda"
             }
-          ]
+          ],
+          serviceClass: "Business",
+        }
+    ]);
+    }, 300);
+  });;
+}
+
+export async function fetchAirports(authToken: string): Promise<Airport[]> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([
+        {
+          city: "Moscow",
+          name: "Domodedovo",
+          iata: "DME"
+        },
+        {
+          city: "Moscow",
+          name: "Vnukovo",
+          iata: "VKO"
+        },
+        {
+          city: "Kazan",
+          name: "Kazan",
+          iata: "KZN"
+        },
+        {
+          city: "Saratov",
+          name: "Gagarin",
+          iata: "GSV"
         }
     ]);
     }, 300);

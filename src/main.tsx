@@ -8,6 +8,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Auth0Provider } from "@auth0/auth0-react";
 import getEnv from './utils/getEnv';
+import { LocalizationProvider } from '@mui/lab';
+import DateAdapter from '@mui/lab/AdapterDayjs';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -20,7 +22,9 @@ ReactDOM.render(
             console.log("called");
           }}
         >
+          <LocalizationProvider dateAdapter={DateAdapter}>
             <App />
+          </LocalizationProvider>
         </Auth0Provider>
       </BrowserRouter>
   </React.StrictMode>

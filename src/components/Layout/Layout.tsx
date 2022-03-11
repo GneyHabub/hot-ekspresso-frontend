@@ -30,7 +30,8 @@ const Layout: React.FC<Props> = ({children, onSidebarOpen}) => {
         flexDirection: "column",
         alignItems: "center",
         rowGap: "30px",
-        backgroundColor: colors.grey[50]
+        backgroundColor: colors.grey[50],
+        overflowY: "scroll"
       }}
     >
       <AppBar position="static">
