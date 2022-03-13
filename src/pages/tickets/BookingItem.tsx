@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Card, colors, Divider, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Card, colors, Divider, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { Booking } from '../../utils/types';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -9,7 +9,7 @@ import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem
 interface Props {
   booking: Booking;
   idx: number;
-  onPick?: (id: string) => void;
+  onPick?: (b: Booking) => void;
 }
 
 const BookingItem: React.FC<Props> = ({booking, idx, onPick}) => {
@@ -77,30 +77,41 @@ const BookingItem: React.FC<Props> = ({booking, idx, onPick}) => {
           <Divider orientation='vertical' flexItem />
           <Box
             sx={{
-              padding: "15px"
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              width: "100%"
             }}
           >
-            <Typography variant="subtitle1" fontSize="18px">
-              <b>Price:</b> ₸{booking.price}
-            </Typography>
-            <Typography variant="subtitle1" fontSize="18px">
-              <b>Departure:</b> {dayjs(booking.flights[0].departure).format('DD.MM.YYYY HH:mm')}
-            </Typography>
-            <Typography variant="subtitle1" fontSize="18px">
-              <b>Arrival:</b> {dayjs(booking.flights[booking.flights.length - 1].arrival).format('DD.MM.YYYY HH:mm')}
-            </Typography>
-            <Typography variant="subtitle1" fontSize="18px">
-              <b>Service Class:</b> {booking.serviceClass}
-            </Typography>
+            <Box
+              sx={{
+                padding: "15px"
+              }}
+            >
+              <Typography variant="subtitle1" fontSize="18px">
+                <b>Price:</b> ₸{booking.price}
+              </Typography>
+              <Typography variant="subtitle1" fontSize="18px">
+                <b>Departure:</b> {dayjs(booking.flights[0].departure).format('DD.MM.YYYY HH:mm')}
+              </Typography>
+              <Typography variant="subtitle1" fontSize="18px">
+                <b>Arrival:</b> {dayjs(booking.flights[booking.flights.length - 1].arrival).format('DD.MM.YYYY HH:mm')}
+              </Typography>
+              <Typography variant="subtitle1" fontSize="18px">
+                <b>Service Class:</b> {booking.serviceClass}
+              </Typography>
+            </Box>
             {onPick &&
               <Button
                 variant="contained"
-                onClick={() => onPick(booking.id)}
+                onClick={() => onPick(booking)}
+                sx={{
+                  alignSelf: "center"
+                }}
               >
                 Choose
               </Button>
             }
-            
           </Box>
         </AccordionDetails>
       </Accordion>

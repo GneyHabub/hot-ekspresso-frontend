@@ -21,3 +21,10 @@ export interface Airport {
 }
 
 export type ServiceClasses = "Economy" | "Comfort" | "Business";
+
+export interface Passenger {
+  name: string;
+  surname: string;
+  passport: string;
+  phoneNumber: string;
+}

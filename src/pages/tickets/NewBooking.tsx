@@ -1,6 +1,6 @@
 import { Search } from '@mui/icons-material';
 import { MobileDatePicker } from '@mui/lab';
-import { Autocomplete, Box, Button, Card, CardContent, CircularProgress, FormControl, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Autocomplete, Box, Button, Card, CardContent, CircularProgress, colors, FormControl, IconButton, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
 import { observer } from 'mobx-react';
 import React from 'react';
 import store from '../../store/newBookingForm.store';
@@ -8,6 +8,10 @@ import getEnv from '../../utils/getEnv';
 import { useAuthToken } from '../../utils/hooks/useAuthToken';
 import { ServiceClasses } from '../../utils/types';
 import BookingItem from './BookingItem';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import CancelIcon from '@mui/icons-material/Cancel';
+import dayjs from 'dayjs';
+import PhoneNumberInput from "material-ui-phone-number";
 
 const NewBooking: React.FC = observer(() => {
   const authToken = useAuthToken({
@@ -113,7 +117,10 @@ const NewBooking: React.FC = observer(() => {
             type="submit"
             disabled={!store.formIsValid}
             startIcon={<Search />}
-            onClick={() => store.searchFlights(authToken)}
+            onClick={() => {
+              store.setSelectedFlight(undefined)
+              store.searchFlights(authToken)
+            }}
           >
             Search flights
           </Button>
@@ -123,14 +130,139 @@ const NewBooking: React.FC = observer(() => {
       {store.flightsFetchingStatus === "fetching" &&
         <CircularProgress />
       }
-      {store.flightsFetchingStatus === "fetched" && store.flights.length !== 0 &&
-      <Card>
-        <CardContent> 
-          {store.flights.map((b, idx) => (
-              <BookingItem idx={idx} booking={b} key={b.id} onPick={(id) => alert(id)}/>
-            ))}
-        </CardContent>
-      </Card>
+      {store.flightsFetchingStatus === "fetched" && store.flights.length !== 0 && !store.selectedFlight &&
+        <Card>
+          <CardContent> 
+            {store.flights.map((b, idx) => (
+                <BookingItem idx={idx} booking={b} key={b.id} onPick={(booking) => store.setSelectedFlight(booking)}/>
+              ))}
+          </CardContent>
+        </Card>
+      }
+      {store.selectedFlight &&
+        <Card
+          raised
+          sx={{
+            color: "white",
+            background: `linear-gradient(145deg, ${colors.blue[500]}, ${colors.blue.A700})`,
+            padding: "20px"
+          }}
+        >
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+          >
+            <Stack
+              direction="row"
+              alignItems="center"
+              gap="10px"
+            >
+              <Typography variant="h4">
+                {store.selectedFlight.flights[0].from}
+              </Typography>
+              <ArrowForwardIcon />
+              {store.selectedFlight.flights.slice(1).map(flight => (
+                <>
+                  <Typography variant="h6">
+                    {flight.from}
+                  </Typography>
+                  <ArrowForwardIcon />
+                </>
+              ))}
+              <Typography variant="h4">
+                {store.selectedFlight.flights[store.selectedFlight.flights.length - 1].to}
+              </Typography>
+            </Stack>
+
+            <IconButton
+              onClick={() => store.setSelectedFlight(undefined)}
+              sx={{
+                color: "white"
+              }}
+            >
+              <CancelIcon fontSize="large" />
+            </IconButton>
+          </Stack>
+          <Typography variant="subtitle1">
+            {dayjs(store.selectedFlight.flights[0].departure).format("DD-MM-YYYY")}
+          </Typography>
+        </Card>
+      }
+      {store.selectedFlight !== undefined &&
+        <>
+          {store.passengers.map((p, idx) => (
+            <Card>
+              <CardContent>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between"
+                  }}
+                >
+                  <Typography variant="h6" gutterBottom>
+                    {`Passenger #${idx + 1}`}
+                  </Typography>
+                  {idx !== 0 &&
+                    <IconButton
+                      onClick={() => store.deletePassenger(idx)}
+                    >
+                      <CancelIcon fontSize="medium" />
+                    </IconButton>
+                  }
+                </Box>
+                <Box
+                  sx={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gridTemplateRows: "1fr 1fr",
+                    gap: "12px",
+                    "& .MuiFilledInput-input": {
+                      backgroundColor: "white"
+                    },
+                    "& .phone-input": {
+                      backgroundColor: "white",
+                      border: "1px solid rgba(0, 0, 0, 0.23)",
+                      borderRadius: "4px"
+                    }
+                  }}
+                >
+                  <TextField value={p.name} label="Name" onChange={(e) => store.setPassengerName(idx, e.target.value)}/>
+                  <TextField value={p.surname} label="Surname" onChange={(e) => store.setPassengerSurname(idx, e.target.value)}/>
+                  <TextField value={p.passport} label="Passport number" onChange={(e) => store.setPassengerPassport(idx, e.target.value)}/>
+                  <PhoneNumberInput 
+                    value={p.phoneNumber} 
+                    defaultCountry={'ua'} 
+                    variant="filled"
+                    inputClass="phone-input"
+                    onChange={(value) => {
+                    if (typeof value === "string") {
+                      store.setPassengerPhoneNumber(idx, value)
+                    }
+                  }} />
+                </Box>
+              </CardContent>
+            </Card>
+          ))}
+          <Button
+            variant='outlined'
+            onClick={() => store.addPassenger()}
+            sx={{
+              width: "150px"
+            }}
+          >
+            Add passenger
+          </Button>
+          <Button
+            variant='contained'
+            onClick={() => store.submit()}
+            sx={{
+              width: "300px",
+              alignSelf: "center"
+            }}
+          >
+            Reserve
+          </Button>
+        </>
       }
     </Box>
   )

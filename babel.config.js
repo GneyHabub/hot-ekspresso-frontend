@@ -12,5 +12,6 @@ module.exports = {
       "runtime": "automatic"
     }],
     "@babel/preset-typescript",
-  ]
+  ],
+  plugins: ['@babel/plugin-transform-runtime', 'babel-plugin-transform-import-meta'],
 }

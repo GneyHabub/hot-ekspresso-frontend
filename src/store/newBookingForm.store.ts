@@ -1,6 +1,6 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import { fetchAirports, fetchBookings } from "../api/tickets";
-import { Airport, Booking, FetchingStatus, Flight, ServiceClasses } from "../utils/types";
+import { Airport, Booking, FetchingStatus, Flight, Passenger, ServiceClasses } from "../utils/types";
 import { notificationStore } from "./notification.store";
 
 class newBookingFormStore {
@@ -12,6 +12,13 @@ class newBookingFormStore {
   serviceClass: ServiceClasses = "Economy";
   flights: Booking[] = [];
   flightsFetchingStatus: FetchingStatus = "notFetched";
+  selectedFlight: Booking | undefined = undefined;
+  passengers: Passenger[] = [{
+    name: "",
+    surname: "",
+    passport: "",
+    phoneNumber: ""
+  }];
 
   constructor() {
     makeAutoObservable(this);
@@ -54,9 +61,51 @@ class newBookingFormStore {
   setServiceClass(sc: ServiceClasses) {
     this.serviceClass = sc;
   }
+  setSelectedFlight(flight: Booking | undefined) {
+    this.selectedFlight = flight;
+  }
+  deletePassenger(idx: number) {
+    runInAction(() => {
+      this.passengers.splice(idx, 1);
+    })
+  }
+  addPassenger() {
+    runInAction(() => {
+      this.passengers.push({
+        name: "",
+        surname: "",
+        passport: "",
+        phoneNumber: ""
+      });
+    });
+  }
+  setPassengerName(idx: number, name: string) {
+    runInAction(() => {
+      this.passengers[idx].name = name;
+    });
+  }
+  setPassengerSurname(idx: number, surname: string) {
+    runInAction(() => {
+      this.passengers[idx].surname = surname;
+    });
+  }
+  setPassengerPassport(idx: number, passport: string) {
+    runInAction(() => {
+      this.passengers[idx].passport = passport;
+    });
+  }
+  setPassengerPhoneNumber(idx: number, phoneNumber: string) {
+    runInAction(() => {
+      this.passengers[idx].phoneNumber = phoneNumber;
+    });
+  }
 
   get formIsValid() {
     return this.fromAirport && this.toAirport;
+  }
+
+  async submit() {
+    
   }
 
   resetForm() {
