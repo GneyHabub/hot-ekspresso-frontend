@@ -258,6 +258,259 @@ exports[`Login matches the snapshot 1`] = `
           </div>
         </div>
       </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation8 MuiCard-root css-t7h509-MuiPaper-root-MuiCard-root"
+      >
+        <div
+          class="css-gmwslw-MuiStack-root"
+        >
+          <div
+            class="css-6iefu9-MuiStack-root"
+          >
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
+            >
+              KZN
+            </h4>
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ArrowForwardIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+              />
+            </svg>
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
+            >
+              GSV
+            </h4>
+          </div>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1jfmqnk-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge css-tzssek-MuiSvgIcon-root"
+              data-testid="CancelIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <h6
+          class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+        >
+          17-12-1995
+        </h6>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-bhp9pd-MuiPaper-root-MuiCard-root"
+      >
+        <div
+          class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+        >
+          <div
+            class="MuiBox-root css-gg4vpm"
+          >
+            <h6
+              class="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom css-18k87ye-MuiTypography-root"
+            >
+              Passenger #1
+            </h6>
+          </div>
+          <div
+            class="MuiBox-root css-16ejmj8"
+          >
+            <div
+              class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+            >
+              <label
+                class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink="false"
+                for="mui-7"
+                id="mui-7-label"
+              >
+                Name
+              </label>
+              <div
+                class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  id="mui-7"
+                  type="text"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="css-173wfxe"
+                  >
+                    <span>
+                      Name
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+            <div
+              class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+            >
+              <label
+                class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink="false"
+                for="mui-8"
+                id="mui-8-label"
+              >
+                Surname
+              </label>
+              <div
+                class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  id="mui-8"
+                  type="text"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="css-173wfxe"
+                  >
+                    <span>
+                      Surname
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+            <div
+              class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+            >
+              <label
+                class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink="false"
+                for="mui-9"
+                id="mui-9-label"
+              >
+                Passport number
+              </label>
+              <div
+                class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  id="mui-9"
+                  type="text"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="css-173wfxe"
+                  >
+                    <span>
+                      Passport number
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+            <div
+              class="MuiFormControl-root MuiTextField-root phone-input css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+            >
+              <div
+                class="MuiFilledInput-root MuiFilledInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-sgvi9r-MuiInputBase-root-MuiFilledInput-root"
+              >
+                <div
+                  class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-filled MuiInputAdornment-sizeMedium MuiPhoneNumber-positionStart css-9mc7sf-MuiInputAdornment-root"
+                >
+                  <span
+                    class="notranslate"
+                  >
+                    ​
+                  </span>
+                  <button
+                    aria-haspopup="true"
+                    aria-label="Select country"
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiPhoneNumber-flagButton css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <svg
+                      class="margin"
+                      viewBox="0 85.333 512 341.333"
+                    >
+                      <path
+                        d="M0 85.337h512v341.326H0z"
+                        fill="#FFDA44"
+                      />
+                      <path
+                        d="M0 85.337h512V256H0z"
+                        fill="#338AF3"
+                      />
+                    </svg>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+                <input
+                  aria-invalid="false"
+                  class="MuiFilledInput-input MuiInputBase-input MuiInputBase-inputAdornedStart css-1vbc0rj-MuiInputBase-input-MuiFilledInput-input"
+                  id="mui-10"
+                  placeholder="+1 (702) 123-4567"
+                  type="tel"
+                  value="+380"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root  css-e35vbc-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        Add passenger
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-1p94qe2-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        Reserve
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
     </div>
   </div>
 </body>

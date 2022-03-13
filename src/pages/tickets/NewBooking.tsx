@@ -191,7 +191,7 @@ const NewBooking: React.FC = observer(() => {
       {store.selectedFlight !== undefined &&
         <>
           {store.passengers.map((p, idx) => (
-            <Card>
+            <Card key={idx}>
               <CardContent>
                 <Box
                   sx={{

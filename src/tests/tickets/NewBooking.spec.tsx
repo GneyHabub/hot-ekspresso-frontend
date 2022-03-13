@@ -39,6 +39,24 @@ jest.mock('../../store/newBookingForm.store', () => ({
     formIsValid: true,
     setSelectedFlight: jest.fn,
     searchFlights: jest.fn,
+    selectedFlight: {
+      id: "AAA",
+      price: 300,
+      flights: [{
+        from: "KZN", 
+        to: "GSV", 
+        departure: new Date('1995-12-17T03:24:00'), 
+        arrival: new Date('1995-12-17T03:24:00'),
+        carrier: "RedWings"
+      }],
+      serviceClass: "Economy",
+    },
+    passengers: [{
+      name: "",
+      surname: "",
+      passport: "",
+      phoneNumber: ""
+    }],
     flights: [
       {
         id: "AAA",
