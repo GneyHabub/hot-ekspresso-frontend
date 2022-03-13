@@ -95,7 +95,7 @@ jest.mock('../../store/newBookingForm.store', () => ({
 }))
 
 
-describe('Login', () => {
+describe('NewBooking', () => {
   it('matches the snapshot', () => {
     const wrapper = render(
       <LocalizationProvider dateAdapter={DateAdapter}>
@@ -105,5 +105,5 @@ describe('Login', () => {
       </LocalizationProvider>
     );
     expect(wrapper.baseElement).toMatchSnapshot();
-  })
+  });
 })
