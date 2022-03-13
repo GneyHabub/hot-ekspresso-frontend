@@ -1,5 +1,4 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import { Autocomplete, Button, Card, CardContent, CircularProgress, Container, TextField, Typography } from '@mui/material';
+import { Button, Card, CardContent, CircularProgress, Typography } from '@mui/material';
 import React from 'react'
 import getEnv from '../../utils/getEnv';
 import { useAuthToken } from '../../utils/hooks/useAuthToken';
