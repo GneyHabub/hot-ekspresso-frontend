@@ -9,8 +9,16 @@ describe('newBookingForm store', () => {
   it('has stuff', () => {
     store.fetchAirports("test");
     store.searchFlights("test");
-    store.setFromAirport("test");
-    store.setToAirport("test");
+    store.setFromAirport({
+      city: "yy",
+      name: "kk",
+      iata: "JJ"
+    });
+    store.setToAirport({
+      city: "yy",
+      name: "kk",
+      iata: "JJ"
+    });
     store.setDepartureDate(new Date('1995-12-17T03:24:00'));
     store.setServiceClass("Economy");
     store.setSelectedFlight({
@@ -30,6 +38,8 @@ describe('newBookingForm store', () => {
     store.setPassengerSurname(0, "test");
     store.setPassengerPassport(0, "test");
     store.setPassengerPhoneNumber(0, "test");
+    store.deletePassenger(0);
+    store.formIsValid;
     store.resetForm();
   })
 })
