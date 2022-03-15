@@ -3,7 +3,7 @@ import getEnv from "../utils/getEnv";
 import { Airport, Booking } from "../utils/types";
 
 export async function fetchBookings(authToken: string): Promise<Booking[]> {
-  const {data} = await axios.get(`${getEnv("BACKEND_URL")}/proxy/attractions/types`,
+  const {data} = await axios.get(`${getEnv("BACKEND_URL")}/proxy/attractions/all`,
   {
     headers: { Authorization: `Bearer ${authToken}` },
   });
