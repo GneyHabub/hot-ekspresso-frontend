@@ -1,4 +1,4 @@
-import { creaeBooking, fetchAirports, fetchBookings } from "../tickets"
+import { createBooking, fetchAirports, fetchBookings } from "../tickets"
 
 describe('Tickets API', () => {
   it('calls fetchBookings', () => {
@@ -10,6 +10,6 @@ describe('Tickets API', () => {
   });
 
   it('calls fetchBookings', () => {
-    const res = creaeBooking('test');
+    const res = createBooking('test');
   })
 })
