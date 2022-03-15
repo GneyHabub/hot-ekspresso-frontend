@@ -52,6 +52,9 @@
     "roots": [
       "<rootDir>/src"
     ],
+    "testPathIgnorePatterns" : [
+      "<rootDir>/src/api/" 
+    ],
     "setupFilesAfterEnv": [
       "<rootDir>/jest/mocks/jest.setup.js"
     ],

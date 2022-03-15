@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login matches the snapshot 1`] = `
+exports[`NewBooking matches the snapshot 1`] = `
 <body>
   <div>
     <div
