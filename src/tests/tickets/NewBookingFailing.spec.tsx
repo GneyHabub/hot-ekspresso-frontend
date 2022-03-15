@@ -8,7 +8,8 @@ import store from '../../store/newBookingForm.store';
 jest.mock('../../store/newBookingForm.store', () => ({
     fetchAirports: jest.fn,
     resetForm: jest.fn,
-    airportsfetchingStatus: "fetched",
+    airportsfetchingStatus: "fetching",
+    flightsFetchingStatus: "fetching",
     airports: [
       {
         city: "Moscow",
@@ -96,7 +97,7 @@ jest.mock('../../store/newBookingForm.store', () => ({
 }))
 
 
-describe('NewBooking', () => {
+describe('NewBookingFetching', () => {
   it('matches the snapshot', () => {
     const wrapper = render(
       <LocalizationProvider dateAdapter={DateAdapter}>
@@ -107,4 +108,5 @@ describe('NewBooking', () => {
     );
     expect(wrapper.baseElement).toMatchSnapshot();
   });
+
 })
