@@ -8,6 +8,7 @@ export async function fetchBookings(authToken: string): Promise<Booking[]> {
   {
     headers: { Authorization: `Bearer ${authToken}` },
   });
+  console.log(data);
   return data;
   // return new Promise((resolve, reject) => {
   //   setTimeout(() => {
