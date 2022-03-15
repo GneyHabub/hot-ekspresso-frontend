@@ -64,7 +64,7 @@ export async function fetchFlights(authToken: string): Promise<Booking[]> {
           flights: [{
             from: 'KZN',
             to: 'DME',
-            departure: dayjs().startOf('month').toDate(),
+            departure: new Date('2022-03-17T03:24:00'),
             arrival: dayjs().startOf('month').add(1, 'hour').toDate(),
             carrier: 'RedWings',
           }],
@@ -77,7 +77,7 @@ export async function fetchFlights(authToken: string): Promise<Booking[]> {
             {
               from: 'KZN',
               to: 'GSV',
-              departure: dayjs().startOf('month').add(10, 'day').toDate(),
+              departure: new Date('2022-03-17T03:24:00'),
               arrival: dayjs().startOf('month').add(10, 'day').add(1, 'hour')
                 .toDate(),
               carrier: 'RedWings',
@@ -101,7 +101,7 @@ export async function fetchFlights(authToken: string): Promise<Booking[]> {
             {
               from: 'KZN',
               to: 'KUF',
-              departure: dayjs().startOf('month').add(10, 'day').toDate(),
+              departure: new Date('2022-03-17T03:24:00'),
               arrival: dayjs().startOf('month').add(10, 'day').add(1, 'hour')
                 .toDate(),
               carrier: 'RedWings',
@@ -127,7 +127,7 @@ export async function fetchFlights(authToken: string): Promise<Booking[]> {
           serviceClass: 'Business',
         },
       ]);
-    }, 500);
+    }, 300);
   });
 }
 
@@ -157,8 +157,8 @@ export async function fetchAirports(authToken: string): Promise<Airport[]> {
         },
         {
           city: 'Samara',
-          name: 'Kurumoch',
-          iata: 'KUF',
+          name: 'Gagarin',
+          iata: 'GSV',
         },
       ]);
     }, 300);
