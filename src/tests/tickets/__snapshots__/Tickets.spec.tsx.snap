@@ -187,7 +187,8 @@ exports[`Login matches the snapshot 1`] = `
                             <b>
                               Price:
                             </b>
-                             ₸
+                             
+                            ₸
                             300
                           </h6>
                           <h6
@@ -387,7 +388,8 @@ exports[`Login matches the snapshot 1`] = `
                             <b>
                               Price:
                             </b>
-                             ₸
+                             
+                            ₸
                             700
                           </h6>
                           <h6
