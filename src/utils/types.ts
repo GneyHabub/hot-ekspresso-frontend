@@ -1,4 +1,4 @@
-export type FetchingStatus = "notFetched" | "fetching" | "fetched" | "errorFetching";
+export type FetchingStatus = 'notFetched' | 'fetching' | 'fetched' | 'errorFetching';
 
 export interface Flight {
   from: string;
@@ -7,6 +7,8 @@ export interface Flight {
   arrival: Date;
   carrier: string;
 }
+
+export type ServiceClasses = 'Economy' | 'Comfort' | 'Business';
 export interface Booking {
   id: string;
   price: number;
@@ -19,8 +21,6 @@ export interface Airport {
   name: string;
   iata: string;
 }
-
-export type ServiceClasses = "Economy" | "Comfort" | "Business";
 
 export interface Passenger {
   name: string;

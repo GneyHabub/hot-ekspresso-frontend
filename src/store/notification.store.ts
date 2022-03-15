@@ -1,5 +1,5 @@
-import { makeAutoObservable } from "mobx";
-import { NotificationType } from "../components/Notification/Notification";
+import { makeAutoObservable } from 'mobx';
+import { NotificationType } from '../components/Notification/Notification';
 
 interface Notification {
   type: NotificationType;
@@ -20,12 +20,14 @@ class NotificationsStore {
   setNotification(notification: Notification) {
     this.notification = notification;
   }
+
   clearNotification() {
     this.notification = undefined;
   }
+
   setNotificationFromError(e: any) {
     this.setNotification({
-      type: "error",
+      type: 'error',
       header: e.name,
       message: e.message,
     });

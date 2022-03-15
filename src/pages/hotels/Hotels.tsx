@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-export default function Hotels() {
-  return (
-    <div>Hotels</div>
-  )
-}
+const Hotels = () => (
+  <div>Hotels</div>
+);
+
+export default Hotels;

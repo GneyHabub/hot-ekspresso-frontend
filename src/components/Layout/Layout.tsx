@@ -1,7 +1,9 @@
 import { Box } from '@mui/system';
 import React from 'react';
 import * as colors from '@mui/material/colors';
-import { AppBar, Container, IconButton, Link, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
+import {
+  AppBar, Container, IconButton, Link, Menu, MenuItem, Toolbar, Typography,
+} from '@mui/material';
 import { useAuth0 } from '@auth0/auth0-react';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -10,8 +12,8 @@ interface Props {
   onSidebarOpen?: () => void
 }
 
-const Layout: React.FC<Props> = ({children, onSidebarOpen}) => {
-  const {isAuthenticated, logout} = useAuth0();
+const Layout: React.FC<Props> = ({ children, onSidebarOpen }) => {
+  const { isAuthenticated, logout } = useAuth0();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -24,19 +26,20 @@ const Layout: React.FC<Props> = ({children, onSidebarOpen}) => {
   return (
     <Box
       sx={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        rowGap: "30px",
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        rowGap: '30px',
         backgroundColor: colors.grey[50],
-        overflowY: "scroll"
+        overflowY: 'scroll',
       }}
     >
       <AppBar position="static">
         <Toolbar>
-          {isAuthenticated &&
+          {isAuthenticated
+            && (
             <IconButton
               size="large"
               edge="start"
@@ -47,13 +50,13 @@ const Layout: React.FC<Props> = ({children, onSidebarOpen}) => {
             >
               <MenuIcon />
             </IconButton>
-          }
-          <Link 
-            sx={{ 
+            )}
+          <Link
+            sx={{
               flexGrow: 1,
-              cursor: "pointer"
-            }} 
-            href="/" 
+              cursor: 'pointer',
+            }}
+            href="/"
             variant="h6"
             component="div"
             underline="none"
@@ -61,7 +64,8 @@ const Layout: React.FC<Props> = ({children, onSidebarOpen}) => {
           >
             Hot Ekspresso Travel ✈️
           </Link>
-          {isAuthenticated &&
+          {isAuthenticated
+            && (
             <div>
               <IconButton
                 size="large"
@@ -91,7 +95,7 @@ const Layout: React.FC<Props> = ({children, onSidebarOpen}) => {
                 <MenuItem onClick={() => logout()}>Logout</MenuItem>
               </Menu>
             </div>
-          }
+            )}
         </Toolbar>
       </AppBar>
       <Container
@@ -99,9 +103,9 @@ const Layout: React.FC<Props> = ({children, onSidebarOpen}) => {
       >
         {children}
       </Container>
-          
+
     </Box>
-  )
-}
+  );
+};
 
 export default Layout;

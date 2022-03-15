@@ -1,39 +1,44 @@
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
-import Layout from './components/Layout/Layout';
-import { NotificationContainer } from './components/Notification/NotificationContainer';
-import Login from './pages/login/Login';
-import Tickets from './pages/tickets/Tickets';
-import { useAuth0 } from "@auth0/auth0-react";
-import { CircularProgress, Divider, Drawer, Icon, IconButton, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import {
+  Route, Routes, Navigate, useNavigate,
+} from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import {
+  CircularProgress, Divider, Drawer, Icon, IconButton, List, ListItem, ListItemIcon, ListItemText,
+} from '@mui/material';
 import React from 'react';
 import { Box } from '@mui/system';
 import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 import HotelIcon from '@mui/icons-material/Hotel';
 import ModeOfTravelIcon from '@mui/icons-material/ModeOfTravel';
 import CloseIcon from '@mui/icons-material/Close';
+import Tickets from './pages/tickets/Tickets';
+import Login from './pages/login/Login';
+import { NotificationContainer } from './components/Notification/NotificationContainer';
+import Layout from './components/Layout/Layout';
 import Hotels from './pages/hotels/Hotels';
 import NewBooking from './pages/tickets/NewBooking';
 
 const App: React.FC = () => {
-  const {isAuthenticated, isLoading} = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
   const navigate = useNavigate();
 
-  if(isLoading) {
+  if (isLoading) {
     return (
-    <Layout>
-      <CircularProgress />
-    </Layout>)
+      <Layout>
+        <CircularProgress />
+      </Layout>
+    );
   }
 
-  if(!isAuthenticated) {
-    return(
+  if (!isAuthenticated) {
+    return (
       <Layout>
         <Routes>
-          <Route path='/login'element={<Login/>}/>
-          <Route path='*' element={<Navigate replace to="/login"/>}/>
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Navigate replace to="/login" />} />
         </Routes>
-        <NotificationContainer/>
+        <NotificationContainer />
       </Layout>
     );
   }
@@ -44,35 +49,35 @@ const App: React.FC = () => {
         onSidebarOpen={() => setIsSidebarOpen(true)}
       >
         <Routes>
-          <Route 
-            path='/tickets'
-            element={<Tickets />} 
+          <Route
+            path="/tickets"
+            element={<Tickets />}
           />
-          <Route 
-            path='/tickets/new-booking'
-            element={<NewBooking />} 
+          <Route
+            path="/tickets/new-booking"
+            element={<NewBooking />}
           />
-          <Route path='/hotels'element={<Hotels />}/>
-          <Route path='*' element={<Navigate replace to="/tickets"/>}/>
+          <Route path="/hotels" element={<Hotels />} />
+          <Route path="*" element={<Navigate replace to="/tickets" />} />
         </Routes>
-        <NotificationContainer/>
+        <NotificationContainer />
       </Layout>
       <Drawer
-        anchor={'left'}
+        anchor="left"
         open={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
       >
         <Box
           sx={{
-            width: 250
+            width: 250,
           }}
           role="presentation"
         >
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              padding: "5px"
+              display: 'flex',
+              justifyContent: 'flex-end',
+              padding: '5px',
             }}
           >
             <IconButton
@@ -83,20 +88,26 @@ const App: React.FC = () => {
           </Box>
           <Divider />
           <List>
-            <ListItem button onClick={() => {
-              setIsSidebarOpen(false);
-              navigate('/tickets');
-            }}>
+            <ListItem
+              button
+              onClick={() => {
+                setIsSidebarOpen(false);
+                navigate('/tickets');
+              }}
+            >
               <ListItemIcon>
                 <AirplaneTicketIcon />
               </ListItemIcon>
               <ListItemText primary="Tickets" />
             </ListItem>
 
-            <ListItem button onClick={() => {
-              setIsSidebarOpen(false);
-              navigate('/hotels');
-            }}>
+            <ListItem
+              button
+              onClick={() => {
+                setIsSidebarOpen(false);
+                navigate('/hotels');
+              }}
+            >
               <ListItemIcon>
                 <HotelIcon />
               </ListItemIcon>
@@ -113,7 +124,7 @@ const App: React.FC = () => {
         </Box>
       </Drawer>
     </>
-  )
+  );
 };
 
-export default App
+export default App;

@@ -1,8 +1,8 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable, runInAction } from 'mobx';
 
 class AppStore {
   token: string | null = null;
-  
+
   constructor() {
     makeAutoObservable(this);
     this.setToken = this.setToken.bind(this);

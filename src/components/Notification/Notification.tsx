@@ -1,8 +1,8 @@
-import { Alert, AlertTitle, Snackbar } from "@mui/material";
-import React from "react";
-import { notificationStore } from "../../store/notification.store";
+import { Alert, AlertTitle, Snackbar } from '@mui/material';
+import React from 'react';
+import { notificationStore } from '../../store/notification.store';
 
-export type NotificationType = "success" | "error";
+export type NotificationType = 'success' | 'error';
 
 interface Props {
   type: NotificationType;
@@ -17,21 +17,19 @@ export const Notification: React.FC<Props> = ({
   header,
   duration,
 }) => {
-  const headerText =
-    header || (type === "success" ? "Congratulations" : "Oops!");
-  const messageText =
-    message ||
-    (type === "success" ? "Action was successful" : "Something wetn wrong...");
+  const headerText = header || (type === 'success' ? 'Congratulations' : 'Oops!');
+  const messageText = message
+    || (type === 'success' ? 'Action was successful' : 'Something wetn wrong...');
   return (
     <Snackbar
-      open={true}
+      open
       autoHideDuration={duration || 7000}
-      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
     >
-      <Alert 
+      <Alert
         severity={type}
         sx={{
-          minWidth: 300
+          minWidth: 300,
         }}
         onClose={notificationStore.clearNotification}
       >
