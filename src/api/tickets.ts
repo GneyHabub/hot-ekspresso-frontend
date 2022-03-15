@@ -77,9 +77,13 @@ export async function fetchAirports(authToken: string): Promise<Airport[]> {
         }
     ]);
     }, 300);
-  });;
+  });
 }
 
-export async function creaeBooking(authToken: string): Promise<void> {
-  
+export async function createBooking(authToken: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, 1000);
+  });
 }

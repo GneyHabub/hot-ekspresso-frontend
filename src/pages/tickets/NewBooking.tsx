@@ -12,6 +12,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CancelIcon from '@mui/icons-material/Cancel';
 import dayjs from 'dayjs';
 import PhoneNumberInput from "material-ui-phone-number";
+import { useNavigate } from 'react-router';
 
 const NewBooking: React.FC = observer(() => {
   const authToken = useAuthToken({
@@ -20,6 +21,7 @@ const NewBooking: React.FC = observer(() => {
     clientId: getEnv("CLIENT_ID"),
     redirect_uri: window.location.origin,
   });
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     if(authToken) {
@@ -29,6 +31,12 @@ const NewBooking: React.FC = observer(() => {
       store.resetForm();
     })
   }, [authToken]);
+
+  React.useEffect(() => {
+    if(store.submittingStatus === "fetched") {
+      navigate("/tickets");
+    }
+  }, [store.submittingStatus]);
 
   if(store.airportsfetchingStatus !== "fetched") {
     return <CircularProgress />
@@ -254,7 +262,7 @@ const NewBooking: React.FC = observer(() => {
           </Button>
           <Button
             variant='contained'
-            onClick={() => store.submit()}
+            onClick={() => store.submit(authToken)}
             sx={{
               width: "300px",
               alignSelf: "center"

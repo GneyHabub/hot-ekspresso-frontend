@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { fetchAirports, fetchBookings } from "../api/tickets";
+import { createBooking, fetchAirports, fetchBookings } from "../api/tickets";
 import { Airport, Booking, FetchingStatus, Flight, Passenger, ServiceClasses } from "../utils/types";
 import { notificationStore } from "./notification.store";
 
@@ -19,6 +19,7 @@ class newBookingFormStore {
     passport: "",
     phoneNumber: ""
   }];
+  submittingStatus: FetchingStatus = "notFetched";
 
   constructor() {
     makeAutoObservable(this);
@@ -104,8 +105,19 @@ class newBookingFormStore {
     return this.fromAirport && this.toAirport;
   }
 
-  async submit() {
-    
+  async submit(authToken: string) {
+    this.submittingStatus = "fetching";
+    try {
+      await createBooking(authToken);
+      this.submittingStatus = "fetched";
+      notificationStore.setNotification({
+        type: "success",
+        message: "Successfully researved a flight!"
+      })
+    } catch(e) {
+      this.submittingStatus = "errorFetching";
+      notificationStore.setNotificationFromError(e);
+    }
   }
 
   resetForm() {
