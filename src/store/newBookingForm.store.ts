@@ -1,5 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx';
-import { createBooking, fetchAirports, fetchBookings } from '../api/tickets';
+import {
+  createBooking, fetchAirports, fetchBookings, fetchFlights,
+} from '../api/tickets';
 import {
   Airport, Booking, FetchingStatus, Passenger, ServiceClasses,
 } from '../utils/types';
@@ -51,7 +53,7 @@ class newBookingFormStore {
   async searchFlights(authToken: string) {
     this.flightsFetchingStatus = 'fetching';
     try {
-      this.flights = await fetchBookings(authToken);
+      this.flights = await fetchFlights(authToken);
       this.flightsFetchingStatus = 'fetched';
     } catch (e) {
       this.flightsFetchingStatus = 'errorFetching';
