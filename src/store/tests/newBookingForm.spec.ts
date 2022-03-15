@@ -40,6 +40,7 @@ describe('newBookingForm store', () => {
     store.setPassengerPhoneNumber(0, "test");
     store.deletePassenger(0);
     store.formIsValid;
+    store.submit("test");
     store.resetForm();
   })
 })
