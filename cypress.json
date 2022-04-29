@@ -1,0 +1,6 @@
+{
+  "experimentalStudio": true,
+  "ignoreTestFiles": ["**/examples/**"],
+  "baseUrl": "https://hot-ekspresso.vercel.app/",
+  "video": true
+}
