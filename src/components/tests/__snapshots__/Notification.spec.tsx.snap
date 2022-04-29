@@ -5,6 +5,7 @@ exports[`Notification error notification matches the snapshot 1`] = `
   <div>
     <div
       class="MuiSnackbar-root MuiSnackbar-anchorOriginBottomRight css-sfbrjq-MuiSnackbar-root"
+      role="presentation"
     >
       <div
         class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardError MuiAlert-standard css-ctw0ts-MuiPaper-root-MuiAlert-root"
@@ -74,6 +75,7 @@ exports[`Notification success notification matches the snapshot 1`] = `
   <div>
     <div
       class="MuiSnackbar-root MuiSnackbar-anchorOriginBottomRight css-sfbrjq-MuiSnackbar-root"
+      role="presentation"
     >
       <div
         class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardSuccess MuiAlert-standard css-1afg15-MuiPaper-root-MuiAlert-root"

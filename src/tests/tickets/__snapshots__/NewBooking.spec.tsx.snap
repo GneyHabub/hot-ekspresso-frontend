@@ -27,9 +27,7 @@ exports[`NewBooking matches the snapshot 1`] = `
                 class="MuiBox-root css-0"
               >
                 <div
-                  aria-expanded="false"
                   class="MuiAutocomplete-root css-x1xt5h-MuiAutocomplete-root"
-                  role="combobox"
                 >
                   <div
                     class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
@@ -54,12 +52,14 @@ exports[`NewBooking matches the snapshot 1`] = `
                     >
                       <input
                         aria-autocomplete="list"
+                        aria-expanded="false"
                         aria-invalid="false"
                         autocapitalize="none"
                         autocomplete="off"
                         class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
                         id="mui-2"
                         required=""
+                        role="combobox"
                         spellcheck="false"
                         type="text"
                         value=""
@@ -72,7 +72,7 @@ exports[`NewBooking matches the snapshot 1`] = `
                         class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                       >
                         <legend
-                          class="css-173wfxe"
+                          class="css-1ftyaf0"
                         >
                           <span>
                             From
@@ -85,9 +85,7 @@ exports[`NewBooking matches the snapshot 1`] = `
                   </div>
                 </div>
                 <div
-                  aria-expanded="false"
                   class="MuiAutocomplete-root css-x1xt5h-MuiAutocomplete-root"
-                  role="combobox"
                 >
                   <div
                     class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
@@ -112,12 +110,14 @@ exports[`NewBooking matches the snapshot 1`] = `
                     >
                       <input
                         aria-autocomplete="list"
+                        aria-expanded="false"
                         aria-invalid="false"
                         autocapitalize="none"
                         autocomplete="off"
                         class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
                         id="mui-4"
                         required=""
+                        role="combobox"
                         spellcheck="false"
                         type="text"
                         value=""
@@ -130,7 +130,7 @@ exports[`NewBooking matches the snapshot 1`] = `
                         class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                       >
                         <legend
-                          class="css-173wfxe"
+                          class="css-1ftyaf0"
                         >
                           <span>
                             To
@@ -175,7 +175,7 @@ exports[`NewBooking matches the snapshot 1`] = `
                       class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                     >
                       <legend
-                        class="css-1z7n62"
+                        class="css-1in441m"
                       >
                         <span>
                           Departure Date
@@ -185,7 +185,7 @@ exports[`NewBooking matches the snapshot 1`] = `
                   </div>
                 </div>
                 <div
-                  class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-1h5q5yu-MuiInputBase-root-MuiOutlinedInput-root"
+                  class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-rnfpgq-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
                 >
                   <div
                     aria-expanded="false"
@@ -218,7 +218,7 @@ exports[`NewBooking matches the snapshot 1`] = `
                     class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                   >
                     <legend
-                      class="css-nnbavb"
+                      class="css-hdw1oc"
                     >
                       <span
                         class="notranslate"
@@ -360,7 +360,7 @@ exports[`NewBooking matches the snapshot 1`] = `
                   class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                 >
                   <legend
-                    class="css-173wfxe"
+                    class="css-1ftyaf0"
                   >
                     <span>
                       Name
@@ -395,7 +395,7 @@ exports[`NewBooking matches the snapshot 1`] = `
                   class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                 >
                   <legend
-                    class="css-173wfxe"
+                    class="css-1ftyaf0"
                   >
                     <span>
                       Surname
@@ -430,7 +430,7 @@ exports[`NewBooking matches the snapshot 1`] = `
                   class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                 >
                   <legend
-                    class="css-173wfxe"
+                    class="css-1ftyaf0"
                   >
                     <span>
                       Passport number
@@ -443,7 +443,7 @@ exports[`NewBooking matches the snapshot 1`] = `
               class="MuiFormControl-root MuiTextField-root phone-input css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
             >
               <div
-                class="MuiFilledInput-root MuiFilledInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-sgvi9r-MuiInputBase-root-MuiFilledInput-root"
+                class="MuiFilledInput-root MuiFilledInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-1xab92c-MuiInputBase-root-MuiFilledInput-root"
               >
                 <div
                   class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-filled MuiInputAdornment-sizeMedium MuiPhoneNumber-positionStart css-9mc7sf-MuiInputAdornment-root"
