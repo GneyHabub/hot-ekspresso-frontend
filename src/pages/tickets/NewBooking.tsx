@@ -24,7 +24,7 @@ import { useNavigate } from 'react-router';
 import store from '../../store/newBookingForm.store';
 import getEnv from '../../utils/getEnv';
 import { useAuthToken } from '../../utils/hooks/useAuthToken';
-import { ServiceClasses } from '../../utils/types';
+import { Airport, isAirport, ServiceClasses } from '../../utils/types';
 import BookingItem from './BookingItem';
 
 const NewBooking: React.FC = observer(() => {
@@ -98,7 +98,12 @@ const NewBooking: React.FC = observer(() => {
                   sx={{
                     width: '50%',
                   }}
-                  getOptionLabel={(airport) => `${airport.iata} - ${airport.city}`}
+                  getOptionLabel={(airport) => {
+                    if (isAirport(airport)) {
+                      return `${airport.iata} - ${airport.city}`;
+                    }
+                    return airport;
+                  }}
                   options={store.airports}
                   renderInput={(params) => <TextField required {...params} label="From" />}
                   onChange={(e, value) => store.setFromAirport(value)}
@@ -108,7 +113,12 @@ const NewBooking: React.FC = observer(() => {
                   sx={{
                     width: '50%',
                   }}
-                  getOptionLabel={(airport) => `${airport.iata} - ${airport.city}`}
+                  getOptionLabel={(airport) => {
+                    if (isAirport(airport)) {
+                      return `${airport.iata} - ${airport.city}`;
+                    }
+                    return airport;
+                  }}
                   options={store.airports}
                   renderInput={(params) => <TextField required {...params} label="To" />}
                   onChange={(e, value) => store.setToAirport(value)}

@@ -22,6 +22,11 @@ export interface Airport {
   iata: string;
 }
 
+export function isAirport(el: any): el is Airport {
+  return (el as Airport).city !== undefined
+  && (el as Airport).city !== undefined && (el as Airport).city !== undefined;
+}
+
 export interface Passenger {
   name: string;
   surname: string;
