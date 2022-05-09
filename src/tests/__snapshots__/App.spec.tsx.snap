@@ -132,7 +132,7 @@ exports[`App matches the snapshot 1`] = `
               </div>
               <button
                 class="MuiLoadingButton-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-1twrztz-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
-                id="mui-1"
+                id="submit"
                 tabindex="0"
                 type="submit"
               >
