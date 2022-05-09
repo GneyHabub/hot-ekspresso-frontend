@@ -168,7 +168,7 @@ exports[`NewBooking when authenticated matches the snapshot 1`] = `
                       id="mui-5"
                       readonly=""
                       type="text"
-                      value="29/04/2022"
+                      value="09/05/2022"
                     />
                     <fieldset
                       aria-hidden="true"
@@ -433,7 +433,7 @@ exports[`NewBooking when not authenticated matches the snapshot 1`] = `
                       id="mui-11"
                       readonly=""
                       type="text"
-                      value="29/04/2022"
+                      value="09/05/2022"
                     />
                     <fieldset
                       aria-hidden="true"

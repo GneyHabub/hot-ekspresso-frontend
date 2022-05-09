@@ -26,24 +26,20 @@ import getEnv from '../../utils/getEnv';
 import { useAuthToken } from '../../utils/hooks/useAuthToken';
 import { Airport, isAirport, ServiceClasses } from '../../utils/types';
 import BookingItem from './BookingItem';
+import authStore from '../../store/store';
 
 const NewBooking: React.FC = observer(() => {
-  const authToken = useAuthToken({
-    domain: getEnv('DOMAIN'),
-    audience: 'https://dev-od7-l947.us.auth0.com/api/v2/',
-    clientId: getEnv('CLIENT_ID'),
-    redirectUri: window.location.origin,
-  });
+  const { token } = authStore;
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    if (authToken) {
-      store.fetchAirports(authToken);
+    if (token) {
+      store.fetchAirports(token);
     }
     return (() => {
       store.resetForm();
     });
-  }, [authToken]);
+  }, [token]);
 
   React.useEffect(() => {
     if (store.submittingStatus === 'fetched') {
@@ -150,7 +146,7 @@ const NewBooking: React.FC = observer(() => {
               startIcon={<Search />}
               onClick={() => {
                 store.setSelectedFlight(undefined);
-                store.searchFlights(authToken);
+                store.searchFlights(token);
               }}
             >
               Search flights
@@ -294,7 +290,7 @@ const NewBooking: React.FC = observer(() => {
           </Button>
           <Button
             variant="contained"
-            onClick={() => store.submit(authToken)}
+            onClick={() => store.submit(token)}
             sx={{
               width: '300px',
               alignSelf: 'center',

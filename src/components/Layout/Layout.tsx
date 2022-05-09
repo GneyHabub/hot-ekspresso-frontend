@@ -4,16 +4,17 @@ import * as colors from '@mui/material/colors';
 import {
   AppBar, Container, IconButton, Link, Menu, MenuItem, Toolbar, Typography,
 } from '@mui/material';
-import { useAuth0 } from '@auth0/auth0-react';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
+import { observer } from 'mobx-react';
+import store from '../../store/store';
 
 interface Props {
   onSidebarOpen?: () => void
 }
 
-const Layout: React.FC<Props> = ({ children, onSidebarOpen }) => {
-  const { isAuthenticated, logout } = useAuth0();
+const Layout: React.FC<Props> = observer(({ children, onSidebarOpen }) => {
+  const { token, logout } = store;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -38,7 +39,7 @@ const Layout: React.FC<Props> = ({ children, onSidebarOpen }) => {
     >
       <AppBar position="static">
         <Toolbar>
-          {isAuthenticated
+          {token
             && (
             <IconButton
               size="large"
@@ -64,7 +65,7 @@ const Layout: React.FC<Props> = ({ children, onSidebarOpen }) => {
           >
             Hot Ekspresso Travel ✈️
           </Link>
-          {isAuthenticated
+          {token
             && (
             <div>
               <IconButton
@@ -92,7 +93,7 @@ const Layout: React.FC<Props> = ({ children, onSidebarOpen }) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={() => logout()}>Logout</MenuItem>
+                <MenuItem onClick={logout}>Logout</MenuItem>
               </Menu>
             </div>
             )}
@@ -106,6 +107,6 @@ const Layout: React.FC<Props> = ({ children, onSidebarOpen }) => {
 
     </Box>
   );
-};
+});
 
 export default Layout;

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 import { notificationStore } from '../../store/notification.store';
 
 interface AuthOptions {
@@ -15,31 +14,7 @@ export const useAuthToken = ({
   clientId,
   redirectUri,
 }: AuthOptions): string => {
-  const { isAuthenticated, getAccessTokenSilently, getAccessTokenWithPopup } = useAuth0();
   const [authToken, setAuthToken] = useState('');
-
-  useEffect(() => {
-    const getToken = async (): Promise<void> => {
-      try {
-        const token = await getAccessTokenSilently({
-          domain,
-          audience,
-          clientId,
-          redirectUri,
-        });
-        setAuthToken(token);
-      } catch (e) {
-        notificationStore.setNotificationFromError(e);
-        if ((e as { message: string }).message === 'Consent required') {
-          setAuthToken(
-            await getAccessTokenWithPopup({ audience, domain, clientId }),
-          );
-        }
-      }
-    };
-
-    getToken();
-  }, [isAuthenticated]);
 
   return authToken;
 };

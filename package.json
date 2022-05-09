@@ -9,13 +9,12 @@
     "test:update-snapshots": "jest -u"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^1.9.0",
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@date-io/dayjs": "^2.13.1",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@fontsource/roboto": "^4.5.3",
-    "@mui/icons-material": "^5.4.2",
+    "@mui/icons-material": "5.4.2",
     "@mui/lab": "^5.0.0-alpha.68",
     "@mui/material": "^5.6.3",
     "@mui/system": "^5.6.3",
@@ -29,6 +28,7 @@
     "mobx-react": "^7.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.30.0",
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
     "ts-jest": "^27.1.4"
@@ -70,7 +70,8 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
+      "!src/**/*.d.ts",
+      "!src/"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",

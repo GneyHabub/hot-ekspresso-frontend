@@ -1,7 +1,6 @@
 import {
   Route, Routes, Navigate, useNavigate,
 } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
 import {
   CircularProgress, Divider, Drawer, Icon, IconButton, List, ListItem, ListItemIcon, ListItemText,
 } from '@mui/material';
@@ -11,19 +10,21 @@ import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 import HotelIcon from '@mui/icons-material/Hotel';
 import ModeOfTravelIcon from '@mui/icons-material/ModeOfTravel';
 import CloseIcon from '@mui/icons-material/Close';
+import { observer } from 'mobx-react';
 import Tickets from './pages/tickets/Tickets';
 import Login from './pages/login/Login';
 import { NotificationContainer } from './components/Notification/NotificationContainer';
 import Layout from './components/Layout/Layout';
 import Hotels from './pages/hotels/Hotels';
 import NewBooking from './pages/tickets/NewBooking';
+import store from './store/store';
 
-const App: React.FC = () => {
-  const { isAuthenticated, isLoading } = useAuth0();
+const App: React.FC = observer(() => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
   const navigate = useNavigate();
+  const { token, tokenFetchingStatus } = store;
 
-  if (isLoading) {
+  if (tokenFetchingStatus === 'fetching') {
     return (
       <Layout>
         <CircularProgress />
@@ -31,7 +32,7 @@ const App: React.FC = () => {
     );
   }
 
-  if (!isAuthenticated) {
+  if (!token) {
     return (
       <Layout>
         <Routes>
@@ -125,6 +126,6 @@ const App: React.FC = () => {
       </Drawer>
     </>
   );
-};
+});
 
 export default App;
