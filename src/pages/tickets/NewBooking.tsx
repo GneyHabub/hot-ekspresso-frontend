@@ -22,9 +22,7 @@ import dayjs from 'dayjs';
 import PhoneNumberInput from 'material-ui-phone-number';
 import { useNavigate } from 'react-router';
 import store from '../../store/newBookingForm.store';
-import getEnv from '../../utils/getEnv';
-import { useAuthToken } from '../../utils/hooks/useAuthToken';
-import { Airport, isAirport, ServiceClasses } from '../../utils/types';
+import { isAirport, ServiceClasses } from '../../utils/types';
 import BookingItem from './BookingItem';
 import authStore from '../../store/store';
 

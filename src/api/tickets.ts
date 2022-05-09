@@ -1,6 +1,5 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
-import getEnv from '../utils/getEnv';
 import { Airport, Booking } from '../utils/types';
 
 export async function fetchBookings(authToken: string): Promise<Booking[]> {
