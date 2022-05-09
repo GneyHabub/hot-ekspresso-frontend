@@ -6,23 +6,17 @@ import { observer } from 'mobx-react';
 import { Box } from '@mui/system';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router';
-import getEnv from '../../utils/getEnv';
-import { useAuthToken } from '../../utils/hooks/useAuthToken';
 import store from '../../store/tickets.store';
 import BookingItem from './BookingItem';
+import authStore from '../../store/store';
 
 const Tickets: React.FC = observer(() => {
   const navigate = useNavigate();
-  const authToken = useAuthToken({
-    domain: getEnv('DOMAIN'),
-    audience: 'https://dev-od7-l947.us.auth0.com/api/v2/',
-    clientId: getEnv('CLIENT_ID'),
-    redirectUri: window.location.origin,
-  });
+  const { token } = authStore;
 
   React.useEffect(() => {
-    store.fetchBookings(authToken);
-  }, [authToken]);
+    store.fetchBookings(token);
+  }, [token]);
 
   if (!store.areBookingsFetched) {
     return (
