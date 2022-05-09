@@ -97,6 +97,7 @@ const Login: React.FC = observer(() => {
           <LoadingButton
             variant="contained"
             type="submit"
+            id="submit"
           >
             Log In
           </LoadingButton>
