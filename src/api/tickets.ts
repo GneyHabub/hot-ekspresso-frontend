@@ -63,7 +63,7 @@ export async function fetchFlights(authToken: string): Promise<Booking[]> {
           flights: [{
             from: 'KZN',
             to: 'DME',
-            departure: new Date('2022-03-17T03:24:00'),
+            departure: new Date('2022-05-12T03:24:00'),
             arrival: dayjs().startOf('month').add(1, 'hour').toDate(),
             carrier: 'RedWings',
           }],
@@ -76,7 +76,7 @@ export async function fetchFlights(authToken: string): Promise<Booking[]> {
             {
               from: 'KZN',
               to: 'GSV',
-              departure: new Date('2022-03-17T03:24:00'),
+              departure: new Date('2022-05-12T03:24:00'),
               arrival: dayjs().startOf('month').add(10, 'day').add(1, 'hour')
                 .toDate(),
               carrier: 'RedWings',
@@ -100,7 +100,7 @@ export async function fetchFlights(authToken: string): Promise<Booking[]> {
             {
               from: 'KZN',
               to: 'KUF',
-              departure: new Date('2022-03-17T03:24:00'),
+              departure: new Date('2022-05-12T03:24:00'),
               arrival: dayjs().startOf('month').add(10, 'day').add(1, 'hour')
                 .toDate(),
               carrier: 'RedWings',
